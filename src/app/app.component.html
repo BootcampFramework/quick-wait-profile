@@ -1,1 +1,15 @@
-<h1>teste</h1>
+<div>
+  <!-- <h1>{{ title }}</h1> -->
+
+  <button class="float-left rounded bg-cyan-600" (click)="button=!button">Open/Close</button>
+  <!-- <parcel
+    [config]="getInforParcel"
+    [mountParcel]="componentMountRootParcel"
+  ></parcel> -->
+  <app-side-nav [toggle]="button">
+    <div>
+
+      <app-hospital-list></app-hospital-list>
+    </div>
+  </app-side-nav>
+</div>
