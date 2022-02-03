@@ -8,6 +8,9 @@ module.exports = (config, options) => {
   // "./src/main-info-sspa.ts" é o caminho até o ts do modulo sspa
   Object.assign(singleSpaWebpackConfig.entry, {
     "frwk-info": "./src/main-info-sspa.ts",
+    "frwk-side-nav": "src/app/Components/side-nav/main-side-nav-sspa.ts",
+    "frwk-hospital-list":
+      "src/app/Components/hospital-list/main-hospital-list-sspa.ts",
   });
 
   // Feel free to modify this webpack config however you'd like to

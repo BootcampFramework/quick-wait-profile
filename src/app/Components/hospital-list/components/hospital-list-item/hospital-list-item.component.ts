@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HospitalListItem } from '../models';
+import { HospitalListItem } from '../../../models';
 
 @Component({
   selector: 'app-hospital-list-item',
