@@ -11,6 +11,8 @@ module.exports = (config, options) => {
     "frwk-side-nav": "src/app/Components/side-nav/main-side-nav-sspa.ts",
     "frwk-hospital-list":
       "src/app/Components/hospital-list/main-hospital-list-sspa.ts",
+    "frwk-shared-side-nav":
+      "src/app/Components/shared-side-nav/shared-side-nav-sspa.ts",
   });
 
   // Feel free to modify this webpack config however you'd like to

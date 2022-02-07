@@ -9,7 +9,8 @@
     "src/main.single-spa.ts",
     "src/main-info-sspa.ts",
     "src/app/Components/side-nav/main-side-nav-sspa.ts",
-    "src/app/Components/hospital-list/main-hospital-list-sspa.ts"
+    "src/app/Components/hospital-list/main-hospital-list-sspa.ts",
+    "src/app/Components/shared-side-nav/shared-side-nav-sspa.ts"
   ],
   "include": ["src/**/*.d.ts"]
 }

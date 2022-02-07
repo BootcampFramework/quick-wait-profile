@@ -51,6 +51,15 @@ export class HospitalListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.importshared();
+
+  }
+
+  async importshared() {
+    // @ts-ignore
+    const moduleShared = await window.System.import('@frwk-shared');
+
+    moduleShared.sharedFunction();
   }
 
 }
