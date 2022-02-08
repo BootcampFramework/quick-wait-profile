@@ -4,7 +4,7 @@
     </div>
     <div style="background-color: #62C4CA" class=' p-4 flex flex-col space-y-10 items-center h-full w-5/12'>
 
-        <form class="mt-8 flex flex-col items-center space-y-3" [formGroup]="formulario">
+        <form class="mt-8 flex flex-col items-center space-y-3" [formGroup]="formulario" (ngSubmit)="onSubmit()">
             <div>
                 <label class="block text-white text-sm font-bold mb-2" for="usuario">
                     Usuario:
@@ -36,9 +36,12 @@
             </p>
             <button
                 class="bg-white hover:bg-cyan-50 text-cyan-700 py-1 px-8 rounded-lg focus:outline-none focus:shadow-outline"
-                type="button">
+                type="submit">
                 Entrar
+
             </button>
+            <p *ngIf="hasError" class="text-sm font-bold text-red-500">
+                Usuario e/ou senha inválidos</p>
             <div class="flex flex-row text-sm space-x-4">
 
                 <button
