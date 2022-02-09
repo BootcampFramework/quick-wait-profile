@@ -21,7 +21,7 @@ export class ConvertTimePtBr implements PipeTransform {
 
   transform(hr: string, ...args: unknown[]): string {
     let timezone = 3;
-    debugger
+    // debugger
     const val = hr.split(':');
     const hrModified = (+val[0] - timezone) + ':' + val[1];
     return hrModified;
