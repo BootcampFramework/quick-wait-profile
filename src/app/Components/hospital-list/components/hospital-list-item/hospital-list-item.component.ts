@@ -9,21 +9,7 @@ import { HospitalListItem } from '../../../models';
 export class HospitalListItemComponent implements OnInit {
 
   @Input() status: string = '';
-  @Input() list = new HospitalListItem(
-    {
-      center: [0, 0],
-      place_name_ptPT: ' ',
-      id: '',
-      text_ptPT: '',
-      text: '',
-      properties: { address: '', category: '', foursquare: '', landmark: false, maki: '' },
-      place_name: '',
-      flag: '',
-    }
-  );
-
-
-  constructor() { }
+  @Input() hospital!: HospitalListItem;
 
   ngOnInit(): void {
   }

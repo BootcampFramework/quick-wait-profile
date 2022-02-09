@@ -1,80 +1,82 @@
-interface PropertiesHospitalListItem {
-  foursquare: string;
-  landmark: boolean;
-  address: string;
-  category: string;
-  maki: string;
-}
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 export interface IHospitalListItem {
   id: string;
-  properties: PropertiesHospitalListItem;
-  text_ptPT: string;
-  place_name_ptPT: string;
-  text: string;
-  place_name: string;
-  center: number[];
-  flag: string;
+  address: string;
+  arrivalTime: string;
+  distance: number;
+  latitude: number;
+  longitude: number;
+  name: string;
+  timeInSecond: number;
 }
 
-export class HospitalListItem implements IHospitalListItem {
-  private _place_name!: string;
+export abstract class AbstractHospitalListItem {
 
-  private _place_name_ptPT!: string;
+  private _address!: string;
 
-  private _properties!: PropertiesHospitalListItem;
+  private _arrivalTime!: string;
 
-  private _text!: string;
+  private _distance!: number;
 
-  private _text_ptPT!: string;
+  private _latitude!: number;
 
-  private _center!: number[];
+  private _longitude!: number;
+
+  private _name!: string;
+
+  private _timeInSecond!: number;
 
   private _id!: string;
 
-  private _flag!: string;
 
 
 
-
-  public get flag(): string {
-    return this._flag;
+  public get address(): string {
+    return this._address;
   }
-  public set flag(value: string) {
-    this._flag = value;
-  }
-
-  public get place_name(): string {
-    return this._place_name;
-  }
-  public set place_name(value: string) {
-    this._place_name = value;
+  public set address(value: string) {
+    this._address = value;
   }
 
-  public get place_name_ptPT(): string {
-    return this._place_name_ptPT;
+  public get arrivalTime(): string {
+    return this._arrivalTime;
   }
-  public set place_name_ptPT(value: string) {
-    this._place_name_ptPT = value;
+  public set arrivalTime(value: string) {
+    this._arrivalTime = value;
   }
 
-  public get properties(): PropertiesHospitalListItem {
-    return this._properties;
+  public get distance(): number {
+    return this._distance;
   }
-  public set properties(value: PropertiesHospitalListItem) {
-    this._properties = value;
+  public set distance(value: number) {
+    this._distance = value;
   }
-  public get text(): string {
-    return this._text;
+
+  public get latitude(): number {
+    return this._latitude;
   }
-  public set text(value: string) {
-    this._text = value;
+  public set latitude(value: number) {
+    this._latitude = value;
   }
-  public get text_ptPT(): string {
-    return this._text_ptPT;
+  public get longitude(): number {
+    return this._longitude;
   }
-  public set text_ptPT(value: string) {
-    this._text_ptPT = value;
+  public set longitude(value: number) {
+    this._longitude = value;
+  }
+  public get name(): string {
+    return this._name;
+  }
+  public set name(value: string) {
+    this._name = value;
+  }
+
+  public get timeInSecond(): number {
+    return this._timeInSecond;
+  }
+  public set timeInSecond(value: number) {
+    this._timeInSecond = value;
   }
 
   public get id(): string {
@@ -84,32 +86,25 @@ export class HospitalListItem implements IHospitalListItem {
     this._id = value;
   }
 
-  public get center(): number[] {
-    return this._center;
+  constructor(
+    { address, arrivalTime, distance, id, latitude, longitude, name, timeInSecond }: IHospitalListItem,
+  ) {
+    this._address = address;
+    this._arrivalTime = arrivalTime;
+    this._distance = distance;
+    this._latitude = latitude;
+    this._longitude = longitude;
+    this._name = name;
+    this._timeInSecond = timeInSecond;
+    this._id = id
   }
-  public set center(value: number[]) {
-    this._center = value;
+}
+
+
+export class HospitalListItem extends AbstractHospitalListItem {
+  public flag!: string;
+  constructor(o: IHospitalListItem) {
+    super(o);
   }
 
-  constructor(
-    { center, id, place_name, properties, text, text_ptPT, place_name_ptPT, flag }: {
-      place_name: string,
-      place_name_ptPT: string,
-      properties: PropertiesHospitalListItem,
-      text: string,
-      text_ptPT: string,
-      center: number[],
-      id: string,
-      flag: string
-    },
-  ) {
-    this._place_name = place_name;
-    this._place_name_ptPT = place_name_ptPT;
-    this._properties = properties;
-    this._text = text;
-    this._text_ptPT = text_ptPT;
-    this._center = center;
-    this._id = id;
-    this._flag = flag
-  }
 }

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { HospitalListItem } from '../models';
+import { HospitalService } from './hospital.service';
+
 
 @Component({
   selector: 'app-hospital-list',
@@ -8,58 +11,34 @@ import { HospitalListItem } from '../models';
 })
 export class HospitalListComponent implements OnInit {
 
-  public MOCK_HOSPITAL_LIST: HospitalListItem[] = [
+  filter!: string;
+  state!: BehaviorSubject<any>;
 
-    new HospitalListItem(
-      {
-        center: [12, 32],
-        place_name_ptPT: 'Hospital teste ',
-        id: 'id1',
-        text_ptPT: 'HSPT',
-        text: 'Hospital São Francisco',
-        properties: { address: 'R. Ernesto Duarte', category: 'hospital, clinic, medical center', foursquare: '4d8a87a26daeb60c740367e0', landmark: true, maki: 'teste' },
-        place_name: 'Hospital São Francisco, R. Ernesto Duarte, Jacareí, São Paulo 12311, Brasil',
-        flag: 'recommended'
-      }
-    ),
-    new HospitalListItem(
-      {
-        center: [12, 32],
-        place_name_ptPT: 'Hospital teste 2',
-        id: 'id1',
-        text_ptPT: 'HSPT',
-        text: 'Hospital São Francisco',
-        properties: { address: 'R. Ernesto Duarte', category: 'hospital, clinic, medical center', foursquare: '4d8a87a26daeb60c740367e0', landmark: true, maki: 'teste' },
-        place_name: 'Hospital São Francisco, R. Ernesto Duarte, Jacareí, São Paulo 12311, Brasil',
-        flag: 'full'
-      }
-    ),
-    new HospitalListItem(
-      {
-        center: [12, 32],
-        place_name_ptPT: 'Hospital teste 2',
-        id: 'id1',
-        text_ptPT: 'HSPT',
-        text: 'Hospital São Francisco',
-        properties: { address: 'R. Ernesto Duarte', category: 'hospital, clinic, medical center', foursquare: '4d8a87a26daeb60c740367e0', landmark: true, maki: 'teste' },
-        place_name: 'Hospital São Francisco, R. Ernesto Duarte, Jacareí, São Paulo 12311, Brasil',
-        flag: 'full'
-      }
-    ),
+  public MOCK_HOSPITAL_LIST: HospitalListItem[] = [];
+  constructor(private hospitalService: HospitalService) {
 
-  ];
-  constructor() { }
+    this.hospitalService.getHospitalList().subscribe(resp => {
+      this.MOCK_HOSPITAL_LIST = resp.map(value => new HospitalListItem(value));
+    })
+  }
 
   ngOnInit(): void {
-    this.importshared();
-
+    // this.importshared().then(
+    //   value => {
+    //     value.state.subscribe((resp: any) => console.debug(resp));
+    //     value.actions.setOrigin(
+    //       {
+    //         lat: -43.9441920245059,
+    //         long: 19.95045684796272
+    //       });
+    //   });
   }
 
   async importshared() {
     // @ts-ignore
     const moduleShared = await window.System.import('@frwk-shared');
-
-    moduleShared.sharedFunction();
+    return moduleShared;
+    // this.state = moduleShared.state$;
   }
 
 }

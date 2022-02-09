@@ -4,10 +4,15 @@ import { HospitalListComponent } from './hospital-list.component';
 import { HospitalListItemComponent } from './components/hospital-list-item/hospital-list-item.component';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { HttpClientModule } from '@angular/common/http';
+import { ArraySortPipe, ConvertTimePtBr, MeterToKilometerPipe } from 'src/app/Pipes/meter-to-kilometer.pipe';
+import { HospitalService } from './hospital.service';
+import { FormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [HospitalListComponent, HospitalListItemComponent],
-  imports: [CommonModule, BrowserModule],
+  declarations: [HospitalListComponent, HospitalListItemComponent, MeterToKilometerPipe, ConvertTimePtBr, ArraySortPipe],
+  imports: [CommonModule, BrowserModule, HttpClientModule, FormsModule],
   exports: [HospitalListComponent],
+  providers: [HospitalService],
   bootstrap: [HospitalListComponent],
 })
-export class HospitalListModule {}
+export class HospitalListModule { }
