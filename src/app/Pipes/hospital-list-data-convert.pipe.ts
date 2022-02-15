@@ -20,15 +20,16 @@ export class MeterToKilometerPipe implements PipeTransform {
 export class ConvertTimePtBr implements PipeTransform {
 
   transform(hr: string, ...args: unknown[]): string {
-    let timezone = 3;
-    // debugger
-    const val = hr.split(':');
-    const hrModified = (+val[0] - timezone) + ':' + val[1];
-    return hrModified;
+
+    const splittedHourFromThePeriodsOfTheDay = hr.split(' ');
+    const splittedHourFromMinute = splittedHourFromThePeriodsOfTheDay[0].split(':');
+    const dateTimezonePTBR: Date = new Date(`2022-01-01T${splittedHourFromThePeriodsOfTheDay[0]}:00`);
+    const returnFormattedTimeString = new Date(dateTimezonePTBR.setUTCHours(+splittedHourFromMinute[0])).toTimeString().split(' ')[0];
+    return `${returnFormattedTimeString} ${splittedHourFromThePeriodsOfTheDay[1]}`
+
   }
 
 }
-
 
 @Pipe({
   name: "sortListItem"

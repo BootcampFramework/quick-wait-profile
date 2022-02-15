@@ -1,7 +1,9 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { HospitalListItem } from '../models';
-import { HospitalService } from './hospital.service';
+import { Component, OnInit } from '@angular/core';
+import { throwError } from 'rxjs';
+import { StateAccessService } from 'src/app/services/state-access.service';
+import { State } from 'src/app/state/models';
+import { HospitalListItem, IHospital, } from '../models';
+
 
 @Component({
   selector: 'app-hospital-list',
@@ -10,37 +12,39 @@ import { HospitalService } from './hospital.service';
 })
 export class HospitalListComponent implements OnInit {
   filter!: string;
-  state!: BehaviorSubject<any>;
+  // state!: BehaviorSubject<any>;
   listOfHospital: HospitalListItem[] = [];
 
   public MOCK_HOSPITAL_LIST: HospitalListItem[] = [];
-  constructor(private hospitalService: HospitalService) {}
+  constructor(private store: StateAccessService) { }
 
   ngOnInit(): void {
-    this.importshared().then((value) => {
-      console.log(value);
 
-      value.state.subscribe((resp: any) => {
-        console.log(resp);
-        // this.state = resp;
-        const { hospitalList } = resp.origin;
-        this.listOfHospital = hospitalList;
+    const state = this.store.importSharedState('@frwk-shared');
+
+    this.subscribeStoreHospitalList(state);
+
+  }
+
+
+  factoryHospitalItem(hospitalList: IHospital[]) {
+    return hospitalList.map((value: IHospital) => new HospitalListItem(value, ''));
+  }
+
+
+  subscribeStoreHospitalList(state: Promise<State>) {
+    state.then((accept) => {
+      accept.state.subscribe((state) => {
+        this.listOfHospital = this.factoryHospitalItem(state.hospitalList);
       });
+    }, (reject) => {
+      throwError('Houve algum problema na importação do modulo');
     });
   }
 
-  async importshared() {
-    // @ts-ignore
-    const moduleShared = await window.System.import('@frwk-shared');
-    return moduleShared;
-    // this.state = moduleShared.state$;
-  }
 
   onSelectHospital(hospital: any, event: any) {
-    console.log(event);
     event.preventDefault();
-    console.log('onSelectHospital');
-    console.log(hospital);
     window.dispatchEvent(
       new CustomEvent('@angular/selectHospital', {
         detail: {

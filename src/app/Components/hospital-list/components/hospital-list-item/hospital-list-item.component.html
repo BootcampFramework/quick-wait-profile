@@ -14,22 +14,22 @@
       </defs>
     </svg>
     <!-- {{hospital|json}} -->
-    <span *ngIf="hospital.flag=='recommended'"
+    <span *ngIf="hospital?.flag=='recommended'"
       class="text-xs block bg-green-500 rounded-md px-2 text-white -translate-y-2">Recomendado</span>
-    <span *ngIf="hospital.flag==='full'"
+    <span *ngIf="hospital?.flag==='full'"
       class="text-xs block bg-red-500 rounded-md text-center px-2 text-white -translate-y-2">Lotado</span>
   </div>
   <div class="inline px-6 w-2/3 max-w-xs">
     <div class="flex justify-between items-center">
-      <span class="text-base text-black font-bold inline-block">{{hospital.name}}</span>
-      <p class="inline text-xs"> {{hospital.distance|meterToKilometer | number : '1.2-2'}} Km</p>
+      <span class="text-base text-black font-bold inline-block">{{hospital?.name}}</span>
+      <p class="inline text-xs"> {{hospital ? (hospital.distance|meterToKilometer | number : '1.2-2'): ''}} Km</p>
     </div>
     <div class="flex justify-between items-center">
       <span class="text-sm text-opacity-30 text-black font-bold inline-block">{{hospital.address}}</span>
     </div>
     <div class="flex justify-between items-center">
       <span class="text-xs text-black font-bold inline-block"> Tempo Estimado de Espera: </span>
-      <p class=" text-xs inline"> {{hospital.arrivalTime|convertTime}}</p>
+      <p class=" text-xs inline"> {{hospital? (hospital.arrivalTime|convertTime):''}}</p>
     </div>
   </div>
 

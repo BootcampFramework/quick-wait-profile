@@ -1,6 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-
-export interface IHospitalListItem {
+export interface IHospital {
   id: string;
   address: string;
   arrivalTime: string;
@@ -8,10 +6,10 @@ export interface IHospitalListItem {
   latitude: number;
   longitude: number;
   name: string;
-  timeInSecond: number;
+  timeInSeconds: number;
 }
 
-export abstract class AbstractHospitalListItem {
+export abstract class AbstractHospital {
 
   private _address!: string;
 
@@ -25,7 +23,7 @@ export abstract class AbstractHospitalListItem {
 
   private _name!: string;
 
-  private _timeInSecond!: number;
+  private _timeInSeconds!: number;
 
   private _id!: string;
 
@@ -72,11 +70,11 @@ export abstract class AbstractHospitalListItem {
     this._name = value;
   }
 
-  public get timeInSecond(): number {
-    return this._timeInSecond;
+  public get timeInSeconds(): number {
+    return this._timeInSeconds;
   }
-  public set timeInSecond(value: number) {
-    this._timeInSecond = value;
+  public set timeInSeconds(value: number) {
+    this._timeInSeconds = value;
   }
 
   public get id(): string {
@@ -87,7 +85,7 @@ export abstract class AbstractHospitalListItem {
   }
 
   constructor(
-    { address, arrivalTime, distance, id, latitude, longitude, name, timeInSecond }: IHospitalListItem,
+    { address, arrivalTime, distance, id, latitude, longitude, name, timeInSeconds }: IHospital,
   ) {
     this._address = address;
     this._arrivalTime = arrivalTime;
@@ -95,16 +93,18 @@ export abstract class AbstractHospitalListItem {
     this._latitude = latitude;
     this._longitude = longitude;
     this._name = name;
-    this._timeInSecond = timeInSecond;
+    this._timeInSeconds = timeInSeconds;
     this._id = id
   }
 }
 
 
-export class HospitalListItem extends AbstractHospitalListItem {
+export class HospitalListItem extends AbstractHospital {
   public flag!: string;
-  constructor(o: IHospitalListItem) {
+  constructor(o: IHospital, flag: string) {
     super(o);
   }
 
 }
+
+
