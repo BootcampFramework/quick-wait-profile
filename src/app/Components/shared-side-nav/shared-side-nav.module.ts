@@ -5,17 +5,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SideNavModule } from '../side-nav/side-nav.module';
 import { HospitalListModule } from '../hospital-list/hospital-list.module';
 
-
-
+import * as Sentry from '@sentry/angular';
+import { BrowserTracing } from '@sentry/tracing';
 @NgModule({
   declarations: [SharedSideNavComponent],
-  imports: [
-    SideNavModule,
-    HospitalListModule,
-    CommonModule,
-    BrowserModule,
-  ],
+  imports: [SideNavModule, HospitalListModule, CommonModule, BrowserModule],
   exports: [SharedSideNavComponent],
-  bootstrap: [SharedSideNavComponent]
+  bootstrap: [SharedSideNavComponent],
 })
-export class SharedSideNavModule { }
+export class SharedSideNavModule {}
