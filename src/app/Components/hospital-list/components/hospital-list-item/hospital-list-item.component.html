@@ -25,7 +25,7 @@
       <p class="inline text-xs"> {{hospital ? (hospital.distance|meterToKilometer | number : '1.2-2'): ''}} Km</p>
     </div>
     <div class="flex justify-between items-center">
-      <span class="text-sm text-opacity-30 text-black font-bold inline-block">{{hospital.address}}</span>
+      <span class="text-sm text-opacity-30 text-black font-bold inline-block">{{hospital?.address}}</span>
     </div>
     <div class="flex justify-between items-center">
       <span class="text-xs text-black font-bold inline-block"> Tempo Estimado de Espera: </span>

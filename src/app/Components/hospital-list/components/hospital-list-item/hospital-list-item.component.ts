@@ -9,7 +9,8 @@ import { HospitalListItem } from '../../../models';
 export class HospitalListItemComponent implements OnInit {
 
   @Input() status: string = '';
-  @Input() hospital!: HospitalListItem;
+  @Input() hospital!: HospitalListItem
+
 
   ngOnInit(): void {
   }

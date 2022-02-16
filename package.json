@@ -6,6 +6,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test-coverage": "ng test --code-coverage",
     "build:single-spa:quick-wait-profile": "ng build quick-wait-profile --prod",
     "start": "ng s --project quick-wait-profile --disable-host-check --port 4200 --live-reload false"
   },
