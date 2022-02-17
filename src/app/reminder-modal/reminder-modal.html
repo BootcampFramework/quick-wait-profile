@@ -1,1 +1,10 @@
-<h1>Reminder modal works</h1>
+<div class="wrapper">
+  <h1 mat-dialog-title>{{data.title}}</h1>
+  <div>
+    <p>{{data.description}}</p>
+    <p>{{data.date}}</p>
+  </div>
+  <div class="close-wrapper">
+    <button mat-button (click)="onNoClick()" class="btn-close">Fechar</button>
+  </div>
+</div>
