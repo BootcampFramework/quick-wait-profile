@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HospitalListItem } from '../models';
 import { HospitalService } from './hospital.service';
+import * as Sentry from '@sentry/angular';
 
 @Component({
   selector: 'app-hospital-list',
