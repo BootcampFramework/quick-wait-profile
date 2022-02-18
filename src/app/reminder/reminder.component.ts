@@ -6,7 +6,7 @@ import { ReminderModalComponent } from '../reminder-modal/reminder-modal';
 @Component({
   selector: 'app-reminder',
   templateUrl: './reminder.component.html',
-  styleUrls: ['./reminder.component.css'],
+  styleUrls: ['./reminder.component.sass'],
 })
 export class ReminderComponent implements OnInit {
   description: string = '';

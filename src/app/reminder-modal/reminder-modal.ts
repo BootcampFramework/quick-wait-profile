@@ -4,7 +4,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 @Component({
   selector: 'app-reminder-modal',
   templateUrl: './reminder-modal.html',
-  styleUrls: ['./reminder-modal.css'],
+  styleUrls: ['./reminder-modal.sass'],
 })
 export class ReminderModalComponent implements OnInit {
   constructor(
