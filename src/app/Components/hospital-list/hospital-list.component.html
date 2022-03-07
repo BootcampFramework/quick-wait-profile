@@ -21,6 +21,7 @@
     <label for="proximo" class="text-xs rounded-lg p-2 bg-white text-cyan-700">Mais Próximo</label>
   </div>
 </div>
+
 <div *ngFor="let hospital of listOfHospital | sortListItem: filter">
   <app-hospital-list-item [hospital]="hospital" (click)="onSelectHospital(hospital, $event)"></app-hospital-list-item>
 </div>

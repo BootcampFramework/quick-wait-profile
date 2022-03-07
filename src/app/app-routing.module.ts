@@ -5,7 +5,7 @@ import { EmptyRouteComponent } from './empty-route/empty-route.component';
 import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
-  { path: 'patient/profile', component: LoginComponent },
+  { path: 'user/login', component: LoginComponent },
   { path: '**', component: EmptyRouteComponent },
 ];
 @NgModule({
