@@ -36,7 +36,7 @@ describe('HospitalListItemComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-  it('should create', () => {
+  it('should be create', () => {
     expect(component).toBeTruthy();
   });
   it('should display elements in screen when(@Input Hospital) has value', () => {

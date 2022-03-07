@@ -8,9 +8,8 @@ describe('SharedSideNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SharedSideNavComponent]
-    })
-      .compileComponents();
+      declarations: [SharedSideNavComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('SharedSideNavComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be create', () => {
     expect(component).toBeTruthy();
   });
 });
