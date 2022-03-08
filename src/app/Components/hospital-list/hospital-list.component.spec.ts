@@ -54,6 +54,24 @@ describe('HospitalListComponent', () => {
     expect(options.length).toEqual(3);
   });
 
+  it('Should create an Array of HospitalListItem', () => {
+    const mockedHospitalList = [
+      {
+        address: 'test',
+        arrivalTime: 'test',
+        distance: 99,
+        id: 'test',
+        latitude: 99,
+        longitude: 99,
+        name: 'test',
+        timeInSeconds: 99,
+      },
+    ];
+    const hospitalListItem = component.factoryHospitalItem(mockedHospitalList);
+    // expect(typeof hospitalListItem).toBe('Array<HospitalListItem>');
+    expect(hospitalListItem.length).toEqual(1);
+  });
+
   it('Should display an Array of HospitalListItem', () => {
     component.listOfHospital = buildHospitalList();
     fixture.detectChanges();

@@ -27,27 +27,18 @@ export class HospitalListComponent implements OnInit {
     // this.subscribeStoreHospitalList(state);
   }
 
-  factoryHospitalItem(hospitalList: IHospital[]) {
+  factoryHospitalItem(hospitalList: IHospital[]): Array<HospitalListItem> {
     return hospitalList.map(
       (value: IHospital) => new HospitalListItem(value, '')
     );
   }
 
-  subscribeStoreHospitalList(state: Promise<State>) {
-    state.then(
-      (accept) => {
-        console.log(accept);
-
-        accept.state.subscribe((state) => {
-          console.log(state);
-
-          this.listOfHospital = this.factoryHospitalItem(state.hospitalList);
-        });
-      },
-      (reject) => {
-        throwError('Houve algum problema na importação do modulo');
-      }
-    );
+  subscribeStoreHospitalList(state: BehaviorSubject<any>) {
+    state.subscribe((_state) => {
+      console.log(_state);
+      const { hospitalList } = _state.origin;
+      this.listOfHospital = this.factoryHospitalItem(hospitalList);
+    });
   }
 
   async importSharedState(name: string): Promise<void> {
@@ -55,11 +46,7 @@ export class HospitalListComponent implements OnInit {
     const moduleShared = await window.System.import(name);
     this.state = moduleShared.state;
     console.log(this.state);
-    this.state.subscribe((state) => {
-      console.log(state);
-      const { hospitalList } = state.origin;
-      this.listOfHospital = this.factoryHospitalItem(hospitalList);
-    });
+    this.subscribeStoreHospitalList(this.state);
   }
 
   onSelectHospital(hospital: any, event: any) {
