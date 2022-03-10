@@ -1,78 +1,43 @@
 <div class="flex flex-row h-screen">
-  <div class="h-full w-full pt-6">
-    <img src="http://localhost:4200/assets/avgw1.svg" />
-  </div>
-  <div
-    style="background-color: #62c4ca"
-    class="p-4 flex flex-col space-y-10 items-center h-full w-5/12"
-  >
-    <form
-      class="mt-8 flex flex-col items-center space-y-3"
-      [formGroup]="formulario"
-      (ngSubmit)="onSubmit()"
-    >
-      <div>
-        <label class="block text-white text-sm font-bold mb-2" for="usuario">
+    <div class="h-full w-full pt-6">
+        <img src="http://localhost:4200/assets/avgw1.svg" />
+    </div>
+    <div style="background-color: #62c4ca" class="p-4 flex flex-col space-y-10 items-center h-full w-5/12">
+        <form class="mt-8 flex flex-col items-center space-y-3" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+            <div>
+                <label class="block text-white text-sm font-bold mb-2" for="usuario">
           Usuario:
         </label>
-        <input
-          class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="usuario"
-          type="text"
-          name="usuario"
-          formControlName="usuario"
-          placeholder=""
-        />
-        <p
-          *ngIf="verificaValidTouched('usuario')"
-          class="text-sm font-bold text-red-500"
-        >
-          Nome de usuário é obrigatório
-        </p>
-      </div>
+                <input class="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" name="username" formControlName="username" placeholder="" />
+                <p *ngIf="verificaValidTouched('usuario')" class="text-sm font-bold text-red-500">
+                    Nome de usuário é obrigatório
+                </p>
+            </div>
 
-      <div>
-        <label class="block text-white text-sm font-bold mb-2" for="senha">
+            <div>
+                <label class="block text-white text-sm font-bold mb-2" for="senha">
           Senha:
         </label>
-        <input
-          class="shadow appearance-none border border-red-500 rounded-lg w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-          id="senha"
-          type="password"
-          name="senha"
-          formControlName="senha"
-          placeholder=""
-        />
-        <p
-          *ngIf="verificaValidTouched('senha')"
-          class="text-sm font-bold text-red-500"
-        >
-          Senha é obrigatório
-        </p>
-      </div>
-      <p class="text-white">
-        esqueceu sua senha?
-        <a
-          class="inline-block align-baseline text-sm text-blue-500 hover:text-blue-800"
-          href="#"
-        >
+                <input class="shadow appearance-none border  rounded-lg w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" name="password" formControlName="password" placeholder="" />
+                <p *ngIf="verificaValidTouched('senha')" class="text-sm font-bold text-red-500">
+                    Senha é obrigatório
+                </p>
+            </div>
+
+            <p class="text-white">
+                esqueceu sua senha?
+                <a class="inline-block align-baseline text-sm text-blue-500 hover:text-blue-800" href="#">
           clique aqui
         </a>
-      </p>
-      <button
-        class="bg-white hover:bg-cyan-50 text-cyan-700 py-1 px-8 rounded-lg focus:outline-none focus:shadow-outline"
-        type="submit"
-      >
-        Entrar
+            </p>
+            <button class="bg-white hover:bg-cyan-50 text-cyan-700 py-1 px-8 rounded-lg focus:outline-none focus:shadow-outline" type="submit">
+        <span>{{ stringButtonLogin }}</span>
       </button>
-      <p *ngIf="hasError" class="text-sm font-bold text-red-500">
-        Usuario e/ou senha inválidos
-      </p>
-      <div class="flex flex-row text-sm space-x-4">
-        <button
-          class="bg-white flex flex-row items-center space-x-2 uppercase hover:bg-cyan-50 text-cyan-700 py-1 px-2 rounded-lg focus:outline-none focus:shadow-outline"
-          type="button"
-        >
+            <p *ngIf="hasError" class="text-sm font-bold text-red-500">
+                Usuario e/ou senha inválidos
+            </p>
+            <div class="flex flex-row text-sm space-x-4">
+                <button class="bg-white flex flex-row items-center space-x-2 uppercase hover:bg-cyan-50 text-cyan-700 py-1 px-2 rounded-lg focus:outline-none focus:shadow-outline" type="button">
           <img
             class="px-1"
             src="http://localhost:4200/assets/google-icon.svg"
@@ -80,28 +45,26 @@
           entrar com google
         </button>
 
-        <button
-          class="bg-white flex flex-row items-center uppercase space-x-2 hover:bg-cyan-50 text-cyan-700 py-1 px-2 rounded-lg focus:outline-none focus:shadow-outline"
-          type="button"
-        >
+                <button class="bg-white flex flex-row items-center uppercase space-x-2 hover:bg-cyan-50 text-cyan-700 py-1 px-2 rounded-lg focus:outline-none focus:shadow-outline" type="button">
           <img
             class="px-1"
             src="http://localhost:4200/assets/facebook-colored-icon.svg"
           />
           Entrar com facebook
         </button>
-      </div>
-    </form>
-    <div class="h-3 w-64 flex flex-row items-center space-x-2">
-      <div class="w-32 rounded-lg h-2 bg-cyan-600"></div>
-      <p class="text-cyan-600">OU</p>
-      <div class="w-32 rounded-lg h-2 bg-cyan-600"></div>
-    </div>
-    <button
-      class="bg-white uppercase hover:bg-cyan-50 text-cyan-700 py-1 px-8 rounded-lg focus:outline-none focus:shadow-outline"
-      type="button"
-    >
+            </div>
+        </form>
+        <div class="h-3 w-64 flex flex-row items-center space-x-2">
+            <div class="w-32 rounded-lg h-2 bg-cyan-600"></div>
+            <p class="text-cyan-600">OU</p>
+            <div class="w-32 rounded-lg h-2 bg-cyan-600"></div>
+        </div>
+        <button (click)="showModalSubscription=true" class="bg-white uppercase hover:bg-cyan-50 text-cyan-700 py-1 px-8 rounded-lg focus:outline-none focus:shadow-outline" type="button">
       cadastre-se agora
     </button>
-  </div>
+    </div>
+</div>
+
+<div *ngIf="showModalSubscription">
+    <app-modal-register (closeModalEvent)="showModalSubscription=false"></app-modal-register>
 </div>

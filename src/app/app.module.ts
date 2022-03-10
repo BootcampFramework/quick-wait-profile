@@ -9,11 +9,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SideNavModule } from './Components/side-nav/side-nav.module';
 import { HospitalListModule } from './Components/hospital-list/hospital-list.module';
 import { SharedSideNavModule } from './Components/shared-side-nav/shared-side-nav.module';
+import { ToastService, AngularToastifyModule } from 'angular-toastify';
 
 import * as Sentry from '@sentry/angular';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { ModalRegisterComponent } from './Components/modal-register/modal-register.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
+export const options: Partial<IConfig> | (() => Partial<IConfig>) = {
+  validation: false
+};
+
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, ModalRegisterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,7 +30,9 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     SideNavModule,
     HospitalListModule,
+    AngularToastifyModule,
     SharedSideNavModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [
     {
@@ -35,11 +46,16 @@ import { Router } from '@angular/router';
       deps: [Router],
     },
     {
+      provide: "AUTH_ENVIRONMENT",
+      useFactory: () => environment.auth,
+    },
+    {
       provide: APP_INITIALIZER,
       useFactory: () => () => {},
       deps: [Sentry.TraceService],
       multi: true,
     },
+    ToastService,
   ],
   bootstrap: [AppComponent],
 })
