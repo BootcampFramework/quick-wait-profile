@@ -1,5 +1,6 @@
 const singleSpaAngularWebpack =
   require("single-spa-angular/lib/webpack").default;
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = (config, options) => {
   const singleSpaWebpackConfig = singleSpaAngularWebpack(config, options);
@@ -13,6 +14,11 @@ module.exports = (config, options) => {
     "frwk-shared-side-nav":
       "src/app/Components/shared-side-nav/shared-side-nav-sspa.ts",
   });
+  singleSpaWebpackConfig.plugins.push(
+    new CopyPlugin({
+      patterns: [{ from: "src/assets", to: "assets" }],
+    })
+  );
 
   // Feel free to modify this webpack config however you'd like to
   return singleSpaWebpackConfig;
