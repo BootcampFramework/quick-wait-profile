@@ -12,6 +12,7 @@ import { SharedSideNavModule } from './Components/shared-side-nav/shared-side-na
 
 import * as Sentry from '@sentry/angular';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 @NgModule({
   declarations: [AppComponent, LoginComponent],
   imports: [
@@ -40,7 +41,13 @@ import { Router } from '@angular/router';
       deps: [Sentry.TraceService],
       multi: true,
     },
+    {
+      provide: 'SERVER_URL',
+      useFactory: () => {
+        return environment.serverURL;
+      },
+    },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { navigateToUrl } from 'single-spa';
 @Component({
@@ -9,7 +9,10 @@ import { navigateToUrl } from 'single-spa';
 export class LoginComponent {
   formulario: FormGroup;
   hasError: boolean;
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    @Inject('SERVER_URL') public serve_url: string
+  ) {
     this.hasError = false;
     this.formulario = this.formBuilder.group({
       usuario: [null, Validators.required],

@@ -1,6 +1,6 @@
 <div class="flex flex-row h-screen">
   <div class="h-full w-full pt-6">
-    <img src="http://localhost:4200/assets/avgw1.svg" />
+    <img src="{{ this.serve_url }}/assets/avgw1.svg" />
   </div>
   <div
     style="background-color: #62c4ca"
@@ -73,10 +73,7 @@
           class="bg-white flex flex-row items-center space-x-2 uppercase hover:bg-cyan-50 text-cyan-700 py-1 px-2 rounded-lg focus:outline-none focus:shadow-outline"
           type="button"
         >
-          <img
-            class="px-1"
-            src="http://localhost:4200/assets/google-icon.svg"
-          />
+          <img class="px-1" src="{{ this.serve_url }}/assets/google-icon.svg" />
           entrar com google
         </button>
 
@@ -86,7 +83,7 @@
         >
           <img
             class="px-1"
-            src="http://localhost:4200/assets/facebook-colored-icon.svg"
+            src="{{ this.serve_url }}/assets/facebook-colored-icon.svg"
           />
           Entrar com facebook
         </button>
