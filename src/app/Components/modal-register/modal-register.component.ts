@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'angular-toastify';
 import { IAuthServiceRegisterResponse, IErrorHandlerMessage, IFormRegisterInputs } from 'src/app/interfaces/User';
@@ -35,7 +35,7 @@ export class ModalRegisterComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private _toastService: ToastService,
-
+    @Inject('SERVER_URL') public serve_url: string
   ) {
 
     this.RegistrationForm = this.formBuilder.group({
