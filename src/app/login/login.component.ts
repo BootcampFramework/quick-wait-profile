@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastService } from 'angular-toastify';
 import { IAuthServiceLoginResponse, IErrorHandlerMessage, IUserInfos } from '../interfaces/User';
@@ -34,8 +34,11 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private authService: AuthService,
     private _toastService: ToastService,
+    @Inject('SERVER_URL') public serve_url: string
 
   ) {
+
+
     this.formulario = this.formBuilder.group({
       username: [null, Validators.required],
       password: [null, Validators.required],

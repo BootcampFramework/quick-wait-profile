@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 
 @Component({
   selector: 'app-side-nav',
@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SideNavComponent {
   @Input() toggle: boolean = false;
-  constructor() {}
+  constructor(@Inject('SERVER_URL') public serve_url: string) {}
 }

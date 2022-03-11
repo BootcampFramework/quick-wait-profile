@@ -56,7 +56,12 @@ export const options: Partial<IConfig> | (() => Partial<IConfig>) = {
       multi: true,
     },
     ToastService,
+    {
+      provide: "SERVER_URL",
+      useFactory: () => environment.serverURL,
+    },
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+
+export class AppModule {}
