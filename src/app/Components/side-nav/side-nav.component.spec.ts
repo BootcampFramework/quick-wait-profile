@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { environment } from 'src/environments/environment';
 
 import { SideNavComponent } from './side-nav.component';
 
@@ -8,9 +9,16 @@ describe('SideNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SideNavComponent]
-    })
-      .compileComponents();
+      declarations: [SideNavComponent],
+      providers: [
+        {
+          provide: 'SERVER_URL',
+          useFactory: () => {
+            return environment.serverURL;
+          },
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
@@ -11,6 +12,14 @@ describe('LoginComponent', () => {
     await TestBed.configureTestingModule({
       imports: [ReactiveFormsModule],
       declarations: [LoginComponent],
+      providers: [
+        {
+          provide: 'SERVER_URL',
+          useFactory: () => {
+            return environment.serverURL;
+          },
+        },
+      ],
     }).compileComponents();
   });
 
